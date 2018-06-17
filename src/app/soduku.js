@@ -1,35 +1,3 @@
-import { Component, OnInit } from '@angular/core';
-//import { soduku } from '../soduku.js';
-
-@Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css']
-})
-export class GridComponent implements OnInit {
-
-//  grid = Soduku.Soduku.generate('easy');
- //sudoku=require('../soduku.js');
-
-grid = sudoku.generate("easy");
-
-  x=10;
-
-  //sudoku = require('./sudoku.js');
-
-  //console.log(grid);
-
-  constructor() { }
-
-  ngOnInit() {
-    //let grid = Soduku.Soduku.generate('easy');
-    //console.log(grid);
-
-  }
-
-}
-
-
 var sudoku = (function() {
 
 	// SUDOKU
@@ -360,7 +328,7 @@ var sudoku = (function() {
 		if (!values) {
 			throw { message : 'Values must be sent in'};
 		}
-		var solved = solve(puzzle,null);
+		var solved = solve(puzzle);
 
 		var errorSquares = [];
 		// 1. Check if there are any wrong fields, Hint about those first
@@ -605,7 +573,7 @@ var sudoku = (function() {
 		var start = new Date().getTime();
 		var minSquares = squareCount(difficulty || 'easy');
 		
-		var fullGrid = solve({}, null);
+		var fullGrid = solve({});
 		var generatedGrid = copy(fullGrid);
 		var shuffledSquares = shuffle(SQUARES);
 		var filledSquares = shuffledSquares.length;
@@ -718,7 +686,7 @@ var sudoku = (function() {
 		generate : generate,
 		serialize : serialize,
 		deserialize : deserialize,
-		debug : true,
+		debug : false,
 		test : parseGrid,
 		unitList : UNITLIST
 	};
@@ -732,8 +700,8 @@ var sudoku = (function() {
 	return module;
 })();
 
-// if (typeof exports !== 'undefined') {
-// 	for (var i in sudoku) {
-// 		exports[i] = sudoku[i];
-// 	}
-// }
+if (typeof exports !== 'undefined') {
+	for (var i in sudoku) {
+		exports[i] = sudoku[i];
+	}
+}

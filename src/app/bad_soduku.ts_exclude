@@ -1,4 +1,4 @@
-export module Soduku {
+export module bad_Soduku {
 
 
     export class Soduku {
@@ -571,8 +571,8 @@ export module Soduku {
             return 20;
         }
 
-        static generate(difficulty) {
-            var start = new Date().getTime();
+        static bad_generate(difficulty) {
+            var generatestart = new Date().getTime();
             var minSquares = Soduku.squareCount(difficulty || 'easy');
 
             var fullGrid = solve({}, null);
