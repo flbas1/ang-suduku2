@@ -1,103 +1,116 @@
+<button (click)="onSolve()">Solve</button>
 
-<table data-ng-model='grid' border="1">
-  <tr>
-    <td id='A1'>{{ grid.A1 }}</td>
-    <td id='B1'>{{ grid.B1 }}</td>
-    <td id='C1'>{{ grid.C1 }}</td>
-    <td id='D1'>{{ grid.D1 }}</td>
-    <td id='E1'>{{ grid.E1 }}</td>
-    <td id='F1'>{{ grid.F1 }}</td>
-    <td id='G1'>{{ grid.G1 }}</td>
-    <td id='H1'>{{ grid.H1 }}</td>
-    <td id='I1'>{{ grid.I1 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A2 }}</td>
-    <td id='B1'>{{ grid.B2 }}</td>
-    <td id='C1'>{{ grid.C2 }}</td>
-    <td id='D1'>{{ grid.D2 }}</td>
-    <td id='E1'>{{ grid.E2 }}</td>
-    <td id='F1'>{{ grid.F2 }}</td>
-    <td id='G1'>{{ grid.G2 }}</td>
-    <td id='H1'>{{ grid.H2 }}</td>
-    <td id='I1'>{{ grid.I2 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A3 }}</td>
-    <td id='B1'>{{ grid.B3 }}</td>
-    <td id='C1'>{{ grid.C3 }}</td>
-    <td id='D1'>{{ grid.D3 }}</td>
-    <td id='E1'>{{ grid.E3 }}</td>
-    <td id='F1'>{{ grid.F3 }}</td>
-    <td id='G1'>{{ grid.G3 }}</td>
-    <td id='H1'>{{ grid.H3 }}</td>
-    <td id='I1'>{{ grid.I3 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A4 }}</td>
-    <td id='B1'>{{ grid.B4 }}</td>
-    <td id='C1'>{{ grid.C4 }}</td>
-    <td id='D1'>{{ grid.D4 }}</td>
-    <td id='E1'>{{ grid.E4 }}</td>
-    <td id='F1'>{{ grid.F4 }}</td>
-    <td id='G1'>{{ grid.G4 }}</td>
-    <td id='H1'>{{ grid.H4 }}</td>
-    <td id='I1'>{{ grid.I4 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A5 }}</td>
-    <td id='B1'>{{ grid.B5 }}</td>
-    <td id='C1'>{{ grid.C5 }}</td>
-    <td id='D1'>{{ grid.D5 }}</td>
-    <td id='E1'>{{ grid.E5 }}</td>
-    <td id='F1'>{{ grid.F5 }}</td>
-    <td id='G1'>{{ grid.G5 }}</td>
-    <td id='H1'>{{ grid.H5 }}</td>
-    <td id='I1'>{{ grid.I5 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A6 }}</td>
-    <td id='B1'>{{ grid.B6 }}</td>
-    <td id='C1'>{{ grid.C6 }}</td>
-    <td id='D1'>{{ grid.D6 }}</td>
-    <td id='E1'>{{ grid.E6 }}</td>
-    <td id='F1'>{{ grid.F6 }}</td>
-    <td id='G1'>{{ grid.G6 }}</td>
-    <td id='H1'>{{ grid.H6 }}</td>
-    <td id='I1'>{{ grid.I6 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A7 }}</td>
-    <td id='B1'>{{ grid.B7 }}</td>
-    <td id='C1'>{{ grid.C7 }}</td>
-    <td id='D1'>{{ grid.D7 }}</td>
-    <td id='E1'>{{ grid.E7 }}</td>
-    <td id='F1'>{{ grid.F7 }}</td>
-    <td id='G1'>{{ grid.G7 }}</td>
-    <td id='H1'>{{ grid.H7 }}</td>
-    <td id='I1'>{{ grid.I7 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A8 }}</td>
-    <td id='B1'>{{ grid.B8 }}</td>
-    <td id='C1'>{{ grid.C8 }}</td>
-    <td id='D1'>{{ grid.D8 }}</td>
-    <td id='E1'>{{ grid.E8 }}</td>
-    <td id='F1'>{{ grid.F8 }}</td>
-    <td id='G1'>{{ grid.G8 }}</td>
-    <td id='H1'>{{ grid.H8 }}</td>
-    <td id='I1'>{{ grid.I8 }}</td>
-  </tr>
-  <tr>
-    <td id='A1'>{{ grid.A9 }}</td>
-    <td id='B1'>{{ grid.B9 }}</td>
-    <td id='C1'>{{ grid.C9 }}</td>
-    <td id='D1'>{{ grid.D9 }}</td>
-    <td id='E1'>{{ grid.E9 }}</td>
-    <td id='F1'>{{ grid.F9 }}</td>
-    <td id='G1'>{{ grid.G9 }}</td>
-    <td id='H1'>{{ grid.H9 }}</td>
-    <td id='I1'>{{ grid.I9 }}</td>
-  </tr>
+	<table data-ng-model='grid.user'>
+		<tr>
+			<td class='C1 R1 G1' id='A1' (click)='useCell($event)'>{{ drawCell('A1') }}</td>
+			<td class='C2 R1 G1' id='B1' (click)='useCell($event)'>{{ drawCell('B1') }}</td>
+			<td class='C3 R1 G1' id='C1' (click)='useCell($event)'>{{ drawCell('C1') }}</td>
+			<td class='C4 R1 G2' id='D1' (click)='useCell($event)'>{{ drawCell('D1') }}</td>
+			<td class='C5 R1 G2' id='E1' (click)='useCell($event)'>{{ drawCell('E1') }}</td>
+			<td class='C6 R1 G2' id='F1' (click)='useCell($event)'>{{ drawCell('F1') }}</td>
+			<td class='C7 R1 G3' id='G1' (click)='useCell($event)'>{{ drawCell('G1') }}</td>
+			<td class='C8 R1 G3' id='H1' (click)='useCell($event)'>{{ drawCell('H1') }}</td>
+			<td class='C9 R1 G3' id='I1' (click)='useCell($event)'>{{ drawCell('I1') }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R2 G1' id='A2' (click)='useCell($event)'>{{ drawCell('A2' ) }}</td>
+			<td class='C2 R2 G1' id='B2' (click)='useCell($event)'>{{ drawCell('B2' ) }}</td>
+			<td class='C3 R2 G1' id='C2' (click)='useCell($event)'>{{ drawCell('C2' ) }}</td>
+			<td class='C4 R2 G2' id='D2' (click)='useCell($event)'>{{ drawCell('D2' ) }}</td>
+			<td class='C5 R2 G2' id='E2' (click)='useCell($event)'>{{ drawCell('E2' ) }}</td>
+			<td class='C6 R2 G2' id='F2' (click)='useCell($event)'>{{ drawCell('F2' ) }}</td>
+			<td class='C7 R2 G3' id='G2' (click)='useCell($event)'>{{ drawCell('G2' ) }}</td>
+			<td class='C8 R2 G3' id='H2' (click)='useCell($event)'>{{ drawCell('H2' ) }}</td>
+			<td class='C9 R2 G3' id='I2' (click)='useCell($event)'>{{ drawCell('I2' ) }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R3 G1' id='A3' (click)='useCell($event)'>{{ drawCell('A3' ) }}</td>
+			<td class='C2 R3 G1' id='B3' (click)='useCell($event)'>{{ drawCell('B3' ) }}</td>
+			<td class='C3 R3 G1' id='C3' (click)='useCell($event)'>{{ drawCell('C3' ) }}</td>
+			<td class='C4 R3 G2' id='D3' (click)='useCell($event)'>{{ drawCell('D3' ) }}</td>
+			<td class='C5 R3 G2' id='E3' (click)='useCell($event)'>{{ drawCell('E3' ) }}</td>
+			<td class='C6 R3 G2' id='F3' (click)='useCell($event)'>{{ drawCell('F3' ) }}</td>
+			<td class='C7 R3 G3' id='G3' (click)='useCell($event)'>{{ drawCell('G3' ) }}</td>
+			<td class='C8 R3 G3' id='H3' (click)='useCell($event)'>{{ drawCell('H3' ) }}</td>
+			<td class='C9 R3 G3' id='I3' (click)='useCell($event)'>{{ drawCell('I3' ) }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R4 G4' id='A4' (click)='useCell($event)'>{{ drawCell('A4' ) }}</td>
+			<td class='C2 R4 G4' id='B4' (click)='useCell($event)'>{{ drawCell('B4' ) }}</td>
+			<td class='C3 R4 G4' id='C4' (click)='useCell($event)'>{{ drawCell('C4' ) }}</td>
+			<td class='C4 R4 G5' id='D4' (click)='useCell($event)'>{{ drawCell('D4' ) }}</td>
+			<td class='C5 R4 G5' id='E4' (click)='useCell($event)'>{{ drawCell('E4' ) }}</td>
+			<td class='C6 R4 G5' id='F4' (click)='useCell($event)'>{{ drawCell('F4' ) }}</td>
+			<td class='C7 R4 G6' id='G4' (click)='useCell($event)'>{{ drawCell('G4' ) }}</td>
+			<td class='C8 R4 G6' id='H4' (click)='useCell($event)'>{{ drawCell('H4' ) }}</td>
+			<td class='C9 R4 G6' id='I4' (click)='useCell($event)'>{{ drawCell('I4' ) }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R5 G4' id='A5' (click)='useCell($event)'>{{ drawCell('A5' ) }}</td>
+			<td class='C2 R5 G4' id='B5' (click)='useCell($event)'>{{ drawCell('B5' ) }}</td>
+			<td class='C3 R5 G4' id='C5' (click)='useCell($event)'>{{ drawCell('C5' ) }}</td>
+			<td class='C4 R5 G5' id='D5' (click)='useCell($event)'>{{ drawCell('D5' ) }}</td>
+			<td class='C5 R5 G5' id='E5' (click)='useCell($event)'>{{ drawCell('E5' ) }}</td>
+			<td class='C6 R5 G5' id='F5' (click)='useCell($event)'>{{ drawCell('F5' ) }}</td>
+			<td class='C7 R5 G6' id='G5' (click)='useCell($event)'>{{ drawCell('G5' ) }}</td>
+			<td class='C8 R5 G6' id='H5' (click)='useCell($event)'>{{ drawCell('H5' ) }}</td>
+			<td class='C9 R5 G6' id='I5' (click)='useCell($event)'>{{ drawCell('I5' ) }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R6 G4' id='A6' (click)='useCell($event)'>{{ drawCell('A6' ) }}</td>
+			<td class='C2 R6 G4' id='B6' (click)='useCell($event)'>{{ drawCell('B6' ) }}</td>
+			<td class='C3 R6 G4' id='C6' (click)='useCell($event)'>{{ drawCell('C6' ) }}</td>
+			<td class='C4 R6 G5' id='D6' (click)='useCell($event)'>{{ drawCell('D6' ) }}</td>
+			<td class='C5 R6 G5' id='E6' (click)='useCell($event)'>{{ drawCell('E6' ) }}</td>
+			<td class='C6 R6 G5' id='F6' (click)='useCell($event)'>{{ drawCell('F6' ) }}</td>
+			<td class='C7 R6 G6' id='G6' (click)='useCell($event)'>{{ drawCell('G6' ) }}</td>
+			<td class='C8 R6 G6' id='H6' (click)='useCell($event)'>{{ drawCell('H6' ) }}</td>
+			<td class='C9 R6 G6' id='I6' (click)='useCell($event)'>{{ drawCell('I6' ) }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R7 G7' id='A7' (click)='useCell($event)'>{{ drawCell('A7' ) }}</td>
+			<td class='C2 R7 G7' id='B7' (click)='useCell($event)'>{{ drawCell('B7' ) }}</td>
+			<td class='C3 R7 G7' id='C7' (click)='useCell($event)'>{{ drawCell('C7' ) }}</td>
+			<td class='C4 R7 G8' id='D7' (click)='useCell($event)'>{{ drawCell('D7' ) }}</td>
+			<td class='C5 R7 G8' id='E7' (click)='useCell($event)'>{{ drawCell('E7' ) }}</td>
+			<td class='C6 R7 G8' id='F7' (click)='useCell($event)'>{{ drawCell('F7' ) }}</td>
+			<td class='C7 R7 G9' id='G7' (click)='useCell($event)'>{{ drawCell('G7' ) }}</td>
+			<td class='C8 R7 G9' id='H7' (click)='useCell($event)'>{{ drawCell('H7' ) }}</td>
+			<td class='C9 R7 G9' id='I7' (click)='useCell($event)'>{{ drawCell('I7' ) }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R8 G7' id='A8' (click)='useCell($event)'>{{ drawCell('A8' ) }}</td>
+			<td class='C2 R8 G7' id='B8' (click)='useCell($event)'>{{ drawCell('B8' ) }}</td>
+			<td class='C3 R8 G7' id='C8' (click)='useCell($event)'>{{ drawCell('C8' ) }}</td>
+			<td class='C4 R8 G8' id='D8' (click)='useCell($event)'>{{ drawCell('D8' ) }}</td>
+			<td class='C5 R8 G8' id='E8' (click)='useCell($event)'>{{ drawCell('E8' ) }}</td>
+			<td class='C6 R8 G8' id='F8' (click)='useCell($event)'>{{ drawCell('F8' ) }}</td>
+			<td class='C7 R8 G9' id='G8' (click)='useCell($event)'>{{ drawCell('G8' ) }}</td>
+			<td class='C8 R8 G9' id='H8' (click)='useCell($event)'>{{ drawCell('H8' ) }}</td>
+			<td class='C9 R8 G9' id='I8' (click)='useCell($event)'>{{ drawCell('I8' ) }}</td>
+		</tr>
+		<tr>
+			<td class='C1 R9 G7' id='A9' (click)='useCell($event)'>{{ drawCell('A9' ) }}</td>
+			<td class='C2 R9 G7' id='B9' (click)='useCell($event)'>{{ drawCell('B9' ) }}</td>
+			<td class='C3 R9 G7' id='C9' (click)='useCell($event)'>{{ drawCell('C9' ) }}</td>
+			<td class='C4 R9 G8' id='D9' (click)='useCell($event)'>{{ drawCell('D9' ) }}</td>
+			<td class='C5 R9 G8' id='E9' (click)='useCell($event)'>{{ drawCell('E9' ) }}</td>
+			<td class='C6 R9 G8' id='F9' (click)='useCell($event)'>{{ drawCell('F9' ) }}</td>
+			<td class='C7 R9 G9' id='G9' (click)='useCell($event)'>{{ drawCell('G9' ) }}</td>
+			<td class='C8 R9 G9' id='H9' (click)='useCell($event)'>{{ drawCell('H9' ) }}</td>
+			<td class='C9 R9 G9' id='I9' (click)='useCell($event)'>{{ drawCell('I9' ) }}</td>
+		</tr>
+  
+    <tr>
+      <td class='N1' id='N1' (click)='useCell($event)'>1</td>
+      <td class='N2' id='N2' (click)='useCell($event)'>2</td>
+      <td class='N3' id='N3' (click)='useCell($event)'>3</td>
+      <td class='N4' id='N4' (click)='useCell($event)'>4</td>
+      <td class='N5' id='N5' (click)='useCell($event)'>5</td>
+      <td class='N6' id='N6' (click)='useCell($event)'>6</td>
+      <td class='N7' id='N7' (click)='useCell($event)'>7</td>
+      <td class='N8' id='N8' (click)='useCell($event)'>8</td>
+      <td class='N9' id='N9' (click)='useCell($event)'>9</td>
 
-</table>>
+    </tr>
+  </table>

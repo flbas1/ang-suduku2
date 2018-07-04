@@ -1,0 +1,19 @@
+/* #preset {
+    background-color:black;
+    color:white;
+ }
+*/
+
+
+table { border-collapse: collapse; font-family: Calibri, sans-serif; }
+colgroup, tbody { border: solid medium; }
+td { border: solid thin; height: 1.4em; width: 1.4em; text-align: center; padding: 0; } 
+
+td.R1 { border-top: solid thick}
+td.R3 { border-bottom: solid thick}
+td.R6 { border-bottom: solid thick}
+
+td.C3 { border-right: solid thick}
+td.C6 { border-right: solid thick}
+td.R9 { border-bottom: solid thick}
+
