@@ -96,12 +96,21 @@ export class GridComponent implements OnInit {
 
 		let newCSS: string = "";
 
+		//highlight any wrong cells
+		for (let r = 1; r <= 9; r++) {
+			for (let c = 1; c <= 9; c++) {
+				let rc = String.fromCharCode(r + 64) + c;
+				if (this.grid.user[rc] !== this.grid.solved[rc] && this.grid.base[rc]==="0")
+					newCSS += `#${rc} {background:red} `;
+			}
+		}
+
 		//check all rows for completeness
 		for (let r = 1; r <= 9; r++) {
 			let isComplete: boolean = true;
 			for (let c = 1; c <= 9; c++) {
 				let rc = String.fromCharCode(r + 64) + c;
-				if (this.grid.user[rc] !== this.grid.base[rc])
+				if (this.grid.user[rc] !== this.grid.solved[rc])
 					isComplete = false;
 			}
 			if (isComplete)
@@ -113,7 +122,7 @@ export class GridComponent implements OnInit {
 			let isComplete: boolean = true;
 			for (let r = 1; r <= 9; r++) {
 				let rc = String.fromCharCode(r + 64) + c;
-				if (this.grid.user[rc] !== this.grid.base[rc])
+				if (this.grid.user[rc] !== this.grid.solved[rc])
 					isComplete = false;
 			}
 			if (isComplete)
@@ -121,44 +130,44 @@ export class GridComponent implements OnInit {
 		}
 
 		//check all groups for completeness
-		if (this.grid.user.A1 === this.grid.base.A1 &&
-			this.grid.user.A2 === this.grid.base.A2 &&
-			this.grid.user.A3 === this.grid.base.A3 &&
+		if (this.grid.user.A1 === this.grid.solved.A1 &&
+			this.grid.user.A2 === this.grid.solved.A2 &&
+			this.grid.user.A3 === this.grid.solved.A3 &&
 
-			this.grid.user.B1 === this.grid.base.B1 &&
-			this.grid.user.B2 === this.grid.base.B2 &&
-			this.grid.user.B3 === this.grid.base.B3 &&
+			this.grid.user.B1 === this.grid.solved.B1 &&
+			this.grid.user.B2 === this.grid.solved.B2 &&
+			this.grid.user.B3 === this.grid.solved.B3 &&
 
-			this.grid.user.C1 === this.grid.base.C1 &&
-			this.grid.user.C2 === this.grid.base.C2 &&
-			this.grid.user.C3 === this.grid.base.C3)
+			this.grid.user.C1 === this.grid.solved.C1 &&
+			this.grid.user.C2 === this.grid.solved.C2 &&
+			this.grid.user.C3 === this.grid.solved.C3)
 			newCSS += '.G1 {background:green} ';
 
-		if (this.grid.user.A4 === this.grid.base.A4 &&
-			this.grid.user.A5 === this.grid.base.A5 &&
-			this.grid.user.A6 === this.grid.base.A6 &&
+		if (this.grid.user.A4 === this.grid.solved.A4 &&
+			this.grid.user.A5 === this.grid.solved.A5 &&
+			this.grid.user.A6 === this.grid.solved.A6 &&
 
-			this.grid.user.B4 === this.grid.base.B4 &&
-			this.grid.user.B5 === this.grid.base.B5 &&
-			this.grid.user.B6 === this.grid.base.B6 &&
+			this.grid.user.B4 === this.grid.solved.B4 &&
+			this.grid.user.B5 === this.grid.solved.B5 &&
+			this.grid.user.B6 === this.grid.solved.B6 &&
 
-			this.grid.user.C4 === this.grid.base.C4 &&
-			this.grid.user.C5 === this.grid.base.C5 &&
-			this.grid.user.C6 === this.grid.base.C6)
+			this.grid.user.C4 === this.grid.solved.C4 &&
+			this.grid.user.C5 === this.grid.solved.C5 &&
+			this.grid.user.C6 === this.grid.solved.C6)
 			newCSS += '.G2 {background:green} ';
 
 
-		if (this.grid.user.A7 === this.grid.base.A7 &&
-			this.grid.user.A8 === this.grid.base.A8 &&
-			this.grid.user.A9 === this.grid.base.A9 &&
+		if (this.grid.user.A7 === this.grid.solved.A7 &&
+			this.grid.user.A8 === this.grid.solved.A8 &&
+			this.grid.user.A9 === this.grid.solved.A9 &&
 
-			this.grid.user.B7 === this.grid.base.B7 &&
-			this.grid.user.B8 === this.grid.base.B8 &&
-			this.grid.user.B9 === this.grid.base.B9 &&
+			this.grid.user.B7 === this.grid.solved.B7 &&
+			this.grid.user.B8 === this.grid.solved.B8 &&
+			this.grid.user.B9 === this.grid.solved.B9 &&
 
-			this.grid.user.C7 === this.grid.base.C7 &&
-			this.grid.user.C8 === this.grid.base.C8 &&
-			this.grid.user.C9 === this.grid.base.C9)
+			this.grid.user.C7 === this.grid.solved.C7 &&
+			this.grid.user.C8 === this.grid.solved.C8 &&
+			this.grid.user.C9 === this.grid.solved.C9)
 			newCSS += '.G3 {background:green} ';
 
 		return newCSS;
