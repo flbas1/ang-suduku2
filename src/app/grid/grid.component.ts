@@ -73,9 +73,10 @@ export class GridComponent implements OnInit {
 			HighlightSelectedCell: true,
 			HighlightSimilarNumbers: true,
 			HighlightSelectedRowsAndColumns: false,
-			HighlightCompletedRowsAndColumns: true,
+			HighlightCompletedRowsAndColumns: false,
 			HighlightCompletedGroups: true,
-			HighlightIncorrectEntry: true
+			HighlightIncorrectEntry: true,
+			HighlightCompletedNumbers: true
 		}
 
 		let color = {
@@ -87,55 +88,38 @@ export class GridComponent implements OnInit {
 
 		let newCSS: string = "";
 
-
 		//Highlight the selected cell.  
 		if (options.HighlightSelectedCell)
 			newCSS += `#${this.lastCell} ${color.highlight}`;
 
-		//region "todo:  combine all of this into one loop "
-		//if the selected cell has a value, populate all of the numbers
-		if (options.HighlightSimilarNumbers)
-			if (this.grid.user[this.lastCell] !== "0")
-				for (let r = 1; r <= 9; r++) {
-					for (let c = 1; c <= 9; c++) {
-						let rc = String.fromCharCode(r + 64) + c;
-						if (this.grid.user[rc] == this.grid.user[this.lastCell]) {
-							newCSS += `#${rc} ${color.highlight}`;  //highlight cell only
-							if (options.HighlightSelectedRowsAndColumns) {
-								newCSS += `.R${r} ${color.highlightRed}`;  //highlight row cell is in
-								newCSS += `.C${c} ${color.highlightRed}`;  //highlight column cell is in
-							}
-						}
-					}
-				}
-
-		if (options.HighlightCompletedRowsAndColumns) {
-
-			//check all rows for completeness
-			for (let r = 1; r <= 9; r++) {
-				let isComplete: boolean = true;
-				for (let c = 1; c <= 9; c++) {
-					let rc = String.fromCharCode(r + 64) + c;
-					if (this.grid.user[rc] !== this.grid.solved[rc])
-						isComplete = false;
-				}
-				if (isComplete)
-					newCSS += `.R${r} ${color.good}`;
-			}
-
-			//check all cols for completeness
+		//removing all of the loops
+		let completed = [9];
+		for (let r = 1; r <= 9; r++) {
+			let rowComplete: boolean = true;
+			let colComplete: boolean = true;
 			for (let c = 1; c <= 9; c++) {
-				let isComplete: boolean = true;
-				for (let r = 1; r <= 9; r++) {
-					let rc = String.fromCharCode(r + 64) + c;
-					if (this.grid.user[rc] !== this.grid.solved[rc])
-						isComplete = false;
+				let RC = String.fromCharCode(r + 64) + c;
+				let CR = String.fromCharCode(c + 64) + r;
+				if (options.HighlightSimilarNumbers && this.grid.user[RC] !== "0" && this.grid.user[RC] == this.grid.user[this.lastCell])
+					newCSS += `#${RC} ${color.highlight}`;  //highlight cell only
+				if (options.HighlightSelectedRowsAndColumns && this.grid.user[RC] == this.grid.user[this.lastCell]) {
+					newCSS += `.R${r} ${color.highlightRed}`;  //highlight row cell is in
+					newCSS += `.C${c} ${color.highlightRed}`;  //highlight column cell is in
 				}
-				if (isComplete)
-					newCSS += `.C${c} ${color.good}`;
+				if (this.grid.user[RC] !== this.grid.solved[RC]) rowComplete = false;
+				if (this.grid.user[CR] !== this.grid.solved[CR]) colComplete = false;
+				completed[this.grid.user[RC]] = completed[this.grid.user[RC]] + 1 || 1;
 			}
+			if (options.HighlightCompletedRowsAndColumns && rowComplete) newCSS += `.R${r} ${color.good}`;
+			if (options.HighlightCompletedRowsAndColumns && colComplete) newCSS += `.C${r} ${color.good}`;
 		}
-		//end region
+
+		if (options.HighlightCompletedNumbers)
+			for (let c = 1; c <= 9; c++)
+				if (completed[c] == 9)
+					newCSS += `#N${c} ${color.good}`;
+
+
 
 		//check all groups for completeness
 		if (options.HighlightCompletedGroups) {
@@ -262,7 +246,7 @@ export class GridComponent implements OnInit {
 				newCSS += `.G9 ${color.good}`;
 		}
 
-		//if i select the wrong #, highlight it
+		//if selected the wrong #, highlight it
 		if (options.HighlightIncorrectEntry)
 			if (inputHappened)
 				if (this.grid.user[this.lastCell] !== this.grid.solved[this.lastCell])
