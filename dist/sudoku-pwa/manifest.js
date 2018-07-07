@@ -3,7 +3,7 @@
     "short_name": "Championship Sudoku",
     "icons": [{
       "src": "/images/logo.png",
-        "sizes": "128x128",
+        "sizes": "144x144",
         "type": "image/png"
       }
       
