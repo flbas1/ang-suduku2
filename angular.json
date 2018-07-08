@@ -22,7 +22,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.js",
-              "src/images/logo.png"
+              "src/images/logo.png",
+              "src/service-worker.js"
             ],
             "styles": [
               "src/styles.css"
