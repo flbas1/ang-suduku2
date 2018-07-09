@@ -85,17 +85,17 @@ export class GridComponent implements OnInit {
 		let color = {
 			bad: "{background: red} ",
 			good: "{background: lightgreen} ",
-			highlight: "{background: green} ",
+			highlight: "{background: LightYellow} ",
 			highlightRed: "{background: orange} ",
+			selected: "{background:yellow}"
 		}
 
 		let newCSS: string = "";
 
 		//Highlight the selected cell.  
 		if (options.HighlightSelectedCell)
-			newCSS += `#${this.lastCell} ${color.highlight}`;
+			newCSS += `#${this.lastCell} ${color.selected}`;
 
-		//removing all of the loops
 		let completed = [9];
 		for (let r = 1; r <= 9; r++) {
 			let rowComplete: boolean = true;

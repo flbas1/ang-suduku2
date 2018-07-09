@@ -1,6 +1,6 @@
 {
-    "name": "Championship Sudoku",
-    "short_name": "Championship Sudoku",
+    "name": "Competitive Sudoku",
+    "short_name": "Competitive Sudoku",
     "icons": [{
       "src": "/images/logo.png",
         "sizes": "144x144",
