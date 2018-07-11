@@ -75,8 +75,8 @@ export class GridComponent implements OnInit {
 			//todo:  import color into here
 			HighlightSelectedCell: true,
 			HighlightSimilarNumbers: true,
-			HighlightSelectedRowsAndColumns: false,
-			HighlightCompletedRowsAndColumns: false,
+			HighlightSelectedRowsAndColumns: true,
+			HighlightCompletedRowsAndColumns: true,
 			HighlightCompletedGroups: true,
 			HighlightIncorrectEntry: true,
 			HighlightCompletedNumbers: true

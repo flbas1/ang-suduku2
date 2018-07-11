@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GridComponent
+    GridComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
