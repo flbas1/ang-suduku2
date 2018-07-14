@@ -1,16 +1,34 @@
 <section class="wrapper">
 
-  <section class="material-design-hamburger">
-      <span style="float:right">{{ appComponent.title }}</span><button class="material-design-hamburger__icon" (click)="onClick($event)"> 
+  <!-- <section class="material-design-hamburger">
+    <span style="float:right">{{ appComponent.title }}</span>
+    <button class="material-design-hamburger__icon" (click)="onClick($event)">
       <span class="material-design-hamburger__layer material-design-hamburger__icon{{ isArrow? '--to-arrow' : '--from-arrow'}}"></span>
     </button>
+  </section> -->
+
+  <section class="material-design-hamburger">
+    <p class="sansserif" (click)="onClick($event)">&#8801; {{ appComponent.title }} </p>
   </section>
 
+
   <section class="menu menu--off {{ isArrow? 'menu--on' : '' }}">
-    <div>Android's Material Design Hamburger Animation</div>
-    <div>Adapted for the web by <a href="https://swirlycheetah.com" target="_blank">Chris Wheatley</a></div>
-    <div><a href="https://github.com/swirlycheetah/material-design-hamburger" target="_blank">Available on GitHub</a></div>
-    <div><a href="https://twitter.com/swirlycheetah" target="_blank">Follow me on Twitter @swirlycheetah</a></div>
+    <div>New Game</div>
+    <div>Options</div>
+    Highlight Selected Cell<br />
+    Highlight Similar Numbers<br />
+    Highlight Selected Rows And Columns<br />
+    Highlight Completed Rows And Columns<br />
+    Highlight Completed Groups<br />
+    Highlight Incorrect Entry<br />
+    Highlight Completed Numbers<br />
+
+    <div>Colors</div>
+    bad<br />
+    good<br />
+    highlight<br />
+    highlight Red<br />
+    selected<br />
   </section>
-  
+
 </section>

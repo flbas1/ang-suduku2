@@ -1,24 +1,22 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-
-body {
-  background: #009688;
-}
-
+/* @import url(https://fonts.googleapis.com/css?family=Roboto); */
+ 
 .wrapper {
-  height: 100%;
+  /* height: 100%; */
   transition: all 300ms ease-in-out;  
-  margin: 1em 0;
-  padding: 0;
-}
-
-.background--blur {
-  background: #004d40;
+  /* margin: 1em 0;
+  padding: 0; */
 }
 
 .menu {
-  font-size:2em;
-  font-family: 'Roboto', sans-serif;
+  /* font-size:2em;
+  font-family: 'Roboto', sans-serif; */
   color: #333;
+  /* filter: blur(0px); */
+  filter:none;
+}
+
+::ng-deep .background--blur  {
+  filter: blur(2px);
 }
 
 .menu div {

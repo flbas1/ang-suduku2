@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -37,7 +36,7 @@ export class MenuComponent implements OnInit {
 
     //var ele = document.getElementById('.material-design-hamburger__icon');
 
-    //document.body.classList.toggle('background--blur');
+    // document.body.classList.toggle('background--blur');
     // ele.parentNode.nextSibling.element.classList.toggle('menu--on');
 
     // child = ele.childNodes[1];.classList;
