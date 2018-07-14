@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { SudokuGame } from  'src/app/grid/grid.component';
 
 @Component({
   selector: 'app-menu',
@@ -10,44 +11,25 @@ export class MenuComponent implements OnInit {
 
   constructor() {
     this.appComponent = new AppComponent();
-   }
+  }
 
-  isArrow:boolean;
+  isArrow: boolean;
   appComponent;
 
   ngOnInit() {
-     this.isArrow=false;
+    this.isArrow = false;
   }
 
-  // (function() {
+  newGame() {
+    this.isArrow = false;
+    var s = SudokuGame.getInstance();
+    s.newGame();
+    
+    
+  }
 
-  //   'use strict';
-
-  //   document.querySelector('.material-design-hamburger__icon').addEventListener(
-  //     'click',
-  //     function() {      
-
-  
 
   onClick($event) {
-    //var child;
-
     this.isArrow = !this.isArrow;
-
-    //var ele = document.getElementById('.material-design-hamburger__icon');
-
-    // document.body.classList.toggle('background--blur');
-    // ele.parentNode.nextSibling.element.classList.toggle('menu--on');
-
-    // child = ele.childNodes[1];.classList;
-
-    // if (child.contains('material-design-hamburger__icon--to-arrow')) {
-    //   child.remove('material-design-hamburger__icon--to-arrow');
-    //   child.add('material-design-hamburger__icon--from-arrow');
-    // } else {
-    //   child.remove('material-design-hamburger__icon--from-arrow');
-    //   child.add('material-design-hamburger__icon--to-arrow');
-    // }
-
   }
 }
