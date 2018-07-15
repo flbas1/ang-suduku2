@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as sudoku from "src/app/grid/sudoku.js";
+import { Options } from 'src/app/options';
 
 @Component({
 	selector: 'app-grid',
@@ -50,30 +51,13 @@ export class GridComponent implements OnInit {
 
 	colorGrid(inputHappened: boolean) {
 		let sudoku = SudokuGame.getInstance();
-		let options = {  //todo: this should be a configuration option
-			//todo:  import color into here
-			HighlightSelectedCell: true,
-			HighlightSimilarNumbers: true,
-			HighlightSelectedRowsAndColumns: true,
-			HighlightCompletedRowsAndColumns: true,
-			HighlightCompletedGroups: true,
-			HighlightIncorrectEntry: true,
-			HighlightCompletedNumbers: true
-		}
-
-		let color = {
-			bad: "{background: red} ",
-			good: "{background: lightgreen} ",
-			highlight: "{background: LightYellow} ",
-			highlightRed: "{background: orange} ",
-			selected: "{background:yellow}"
-		}
-
+		let options = Options.getInstance();
+		
 		let newCSS: string = "";
 
 		//Highlight the selected cell.  
-		if (options.HighlightSelectedCell)
-			newCSS += `#${sudoku.lastCell} ${color.selected}`;
+		if (options.options.HighlightSelectedCell)
+			newCSS += `#${sudoku.lastCell} ${options.color.selected}`;
 
 		let completed = [9];
 		for (let r = 1; r <= 9; r++) {
@@ -82,32 +66,32 @@ export class GridComponent implements OnInit {
 			for (let c = 1; c <= 9; c++) {
 				let RC = String.fromCharCode(r + 64) + c;
 				let CR = String.fromCharCode(c + 64) + r;
-				if (options.HighlightSimilarNumbers && sudoku.grid.user[RC] !== "0" && sudoku.grid.user[RC] == sudoku.grid.user[sudoku.lastCell])
-					newCSS += `#${RC} ${color.highlight}`;  //highlight cell only
-				if (options.HighlightSelectedRowsAndColumns && sudoku.grid.user[RC] == sudoku.grid.user[sudoku.lastCell]) {
-					newCSS += `.R${r} ${color.highlightRed}`;  //highlight row cell is in
-					newCSS += `.C${c} ${color.highlightRed}`;  //highlight column cell is in
+				if (options.options.HighlightSimilarNumbers && sudoku.grid.user[RC] !== "0" && sudoku.grid.user[RC] == sudoku.grid.user[sudoku.lastCell])
+					newCSS += `#${RC} ${options.color.highlight}`;  //highlight cell only
+				if (options.options.HighlightSelectedRowsAndColumns && sudoku.grid.user[RC] == sudoku.grid.user[sudoku.lastCell]) {
+					newCSS += `.R${r} ${options.color.highlightRed}`;  //highlight row cell is in
+					newCSS += `.C${c} ${options.color.highlightRed}`;  //highlight column cell is in
 				}
 				if (sudoku.grid.user[RC] !== sudoku.grid.solution[RC]) rowComplete = false;
 				if (sudoku.grid.user[CR] !== sudoku.grid.solution[CR]) colComplete = false;
 				completed[sudoku.grid.user[RC]] = completed[sudoku.grid.user[RC]] + 1 || 1;
 			}
-			if (options.HighlightCompletedRowsAndColumns && rowComplete) newCSS += `.R${r} ${color.good}`;
-			if (options.HighlightCompletedRowsAndColumns && colComplete) newCSS += `.C${r} ${color.good}`;
+			if (options.options.HighlightCompletedRowsAndColumns && rowComplete) newCSS += `.R${r} ${options.color.good}`;
+			if (options.options.HighlightCompletedRowsAndColumns && colComplete) newCSS += `.C${r} ${options.color.good}`;
 		}
 
 		let _isSolved: boolean = true;
 		for (let c = 1; c <= 9; c++)
 			if (completed[c] == 9) {
-				if (options.HighlightCompletedNumbers)
-					newCSS += `#N${c} ${color.good}`;
+				if (options.options.HighlightCompletedNumbers)
+					newCSS += `#N${c} ${options.color.good}`;
 			}
 			else
 				_isSolved = false;
 		sudoku.grid.isSolved = _isSolved;
 
 		//check all groups for completeness
-		if (options.HighlightCompletedGroups) {
+		if (options.options.HighlightCompletedGroups) {
 			//top 3
 			if (sudoku.grid.user.A1 === sudoku.grid.solution.A1 &&
 				sudoku.grid.user.A2 === sudoku.grid.solution.A2 &&
@@ -120,7 +104,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.C1 === sudoku.grid.solution.C1 &&
 				sudoku.grid.user.C2 === sudoku.grid.solution.C2 &&
 				sudoku.grid.user.C3 === sudoku.grid.solution.C3)
-				newCSS += `.G1 ${color.good}`;
+				newCSS += `.G1 ${options.color.good}`;
 
 			if (sudoku.grid.user.A4 === sudoku.grid.solution.A4 &&
 				sudoku.grid.user.A5 === sudoku.grid.solution.A5 &&
@@ -133,7 +117,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.C4 === sudoku.grid.solution.C4 &&
 				sudoku.grid.user.C5 === sudoku.grid.solution.C5 &&
 				sudoku.grid.user.C6 === sudoku.grid.solution.C6)
-				newCSS += `.G2 ${color.good}`;
+				newCSS += `.G2 ${options.color.good}`;
 
 
 			if (sudoku.grid.user.A7 === sudoku.grid.solution.A7 &&
@@ -147,7 +131,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.C7 === sudoku.grid.solution.C7 &&
 				sudoku.grid.user.C8 === sudoku.grid.solution.C8 &&
 				sudoku.grid.user.C9 === sudoku.grid.solution.C9)
-				newCSS += `.G3 ${color.good}`
+				newCSS += `.G3 ${options.color.good}`
 
 			//middle  3
 			if (sudoku.grid.user.D1 === sudoku.grid.solution.D1 &&
@@ -161,7 +145,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.F1 === sudoku.grid.solution.F1 &&
 				sudoku.grid.user.F2 === sudoku.grid.solution.F2 &&
 				sudoku.grid.user.F3 === sudoku.grid.solution.F3)
-				newCSS += `.G4 ${color.good}`;
+				newCSS += `.G4 ${options.color.good}`;
 
 			if (sudoku.grid.user.D4 === sudoku.grid.solution.D4 &&
 				sudoku.grid.user.D5 === sudoku.grid.solution.D5 &&
@@ -174,7 +158,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.F4 === sudoku.grid.solution.F4 &&
 				sudoku.grid.user.F5 === sudoku.grid.solution.F5 &&
 				sudoku.grid.user.F6 === sudoku.grid.solution.F6)
-				newCSS += `.G5 ${color.good}`;
+				newCSS += `.G5 ${options.color.good}`;
 
 			if (sudoku.grid.user.D7 === sudoku.grid.solution.D7 &&
 				sudoku.grid.user.D8 === sudoku.grid.solution.D8 &&
@@ -187,7 +171,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.F7 === sudoku.grid.solution.F7 &&
 				sudoku.grid.user.F8 === sudoku.grid.solution.F8 &&
 				sudoku.grid.user.F9 === sudoku.grid.solution.F9)
-				newCSS += `.G6 ${color.good}`;
+				newCSS += `.G6 ${options.color.good}`;
 
 			//bottom 3 
 			if (sudoku.grid.user.G1 === sudoku.grid.solution.G1 &&
@@ -201,7 +185,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.I1 === sudoku.grid.solution.I1 &&
 				sudoku.grid.user.I2 === sudoku.grid.solution.I2 &&
 				sudoku.grid.user.I3 === sudoku.grid.solution.I3)
-				newCSS += `.G7 ${color.good}`;
+				newCSS += `.G7 ${options.color.good}`;
 
 			if (sudoku.grid.user.G4 === sudoku.grid.solution.G4 &&
 				sudoku.grid.user.G5 === sudoku.grid.solution.G5 &&
@@ -214,7 +198,7 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.I4 === sudoku.grid.solution.I4 &&
 				sudoku.grid.user.I5 === sudoku.grid.solution.I5 &&
 				sudoku.grid.user.I6 === sudoku.grid.solution.I6)
-				newCSS += `.G8 ${color.good}`;
+				newCSS += `.G8 ${options.color.good}`;
 
 
 			if (sudoku.grid.user.G7 === sudoku.grid.solution.G7 &&
@@ -228,14 +212,14 @@ export class GridComponent implements OnInit {
 				sudoku.grid.user.I7 === sudoku.grid.solution.I7 &&
 				sudoku.grid.user.I8 === sudoku.grid.solution.I8 &&
 				sudoku.grid.user.I9 === sudoku.grid.solution.I9)
-				newCSS += `.G9 ${color.good}`;
+				newCSS += `.G9 ${options.color.good}`;
 		}
 
 		//if selected the wrong #, highlight it
-		if (options.HighlightIncorrectEntry)
+		if (options.options.HighlightIncorrectEntry)
 			if (inputHappened)
 				if (sudoku.grid.user[sudoku.lastCell] !== sudoku.grid.solution[sudoku.lastCell])
-					newCSS += `#${sudoku.lastCell} ${color.bad}`;
+					newCSS += `#${sudoku.lastCell} ${options.color.bad}`;
 
 		return newCSS;
 
